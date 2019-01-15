@@ -10,5 +10,7 @@
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
 \Magento\Framework\Component\ComponentRegistrar::register(
-    \Magento\Framework\Component\ComponentRegistrar::MODULE, 'Magestat_SigninPhoneNumber', __DIR__
+    \Magento\Framework\Component\ComponentRegistrar::MODULE,
+    'Magestat_SigninPhoneNumber',
+    __DIR__
 );

@@ -20,11 +20,6 @@ namespace Magestat\SigninPhoneNumber\Model\Config\Source;
 class SigninMode
 {
     /**
-     * @var int Default value.
-     */
-    const TYPE_DEFAULT = 0;
-
-    /**
      * @var int Value using phone to sign in.
      */
     const TYPE_PHONE = 1;
@@ -42,8 +37,8 @@ class SigninMode
     public function toOptionArray()
     {
         return [
-            self::TYPE_PHONE => __('Sign in Only With Phone & Password'),
-            self::TYPE_BOTH_OR => __('Sign in With Phone or Email & Password'),
+            self::TYPE_PHONE => __('Sign in Only With Phone and Password'),
+            self::TYPE_BOTH_OR => __('Sign in With Phone/Email and Password'),
         ];
     }
 }

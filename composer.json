@@ -3,11 +3,11 @@
     "description": "This extension allows customers to access your store using their phone number.",
     "keywords": [
         "magento 2",
-        "split order",
-        "magento quote",
-        "split quote",
-        "magento 2 split quote",
-        "magento 2 split order"
+        "phone",
+        "phone number",
+        "customer login",
+        "login with phone",
+        "magento 2 login"
     ],
     "type": "magento2-module",
     "license": [

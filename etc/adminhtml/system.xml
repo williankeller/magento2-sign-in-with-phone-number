@@ -28,7 +28,7 @@
             </group>
             <group id="options" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
                 <label>Settings</label>
-                <field id="attributes" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Sign in Mode</label>
                     <source_model>Magestat\SigninPhoneNumber\Model\Config\Source\SigninMode</source_model>
                 </field>

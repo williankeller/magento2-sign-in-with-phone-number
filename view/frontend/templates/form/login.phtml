@@ -11,7 +11,7 @@
  * // @codingStandardsIgnoreFile
  * 
  * @see \Magento\Customer\Block\Form\Login
- * @var \Magento\Customer\Block\Form\Login $block
+ * @var \Magestat\SigninPhoneNumber\Block\Form\Login $block
  */
 ?>
 <div class="block block-customer-login">
@@ -24,17 +24,29 @@
               method="post"
               id="login-form"
               data-mage-init='{"validation":{}}'>
-                  <?= $block->getBlockHtml('formkey') ?>
+            <?= $block->getBlockHtml('formkey') ?>
             <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
-                <div class="field note"><?= $block->escapeHtml(__('If you have an account, sign in with your email address.')) ?></div>
-                <div class="field email required">
-                    <label class="label" for="email">
-                        <span><?= $block->escapeHtml(__('Email')) ?></span>
-                    </label>
-                    <div class="control">
-                        <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-validate="{required:true, 'validate-email':true}">
+                <?php if ($block->isEnabled()): ?>
+                    <div class="field note"><?= $block->getMode()->getNote() ?></div>
+                    <div class="field email required">
+                        <label class="label" for="email">
+                            <span><?= $block->getMode()->getLabel() ?></span>
+                        </label>
+                        <div class="control">
+                            <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> id="email" type="text" class="input-text" title="<?= $block->getMode()->getTitle() ?>" data-validate="{required:true}">
+                        </div>
                     </div>
-                </div>
+                <?php else: ?>
+                    <div class="field note"><?= $block->escapeHtml(__('If you have an account, sign in with your email address.')) ?></div>
+                    <div class="field email required">
+                        <label class="label" for="email">
+                            <span><?= $block->escapeHtml(__('Email')) ?></span>
+                        </label>
+                        <div class="control">
+                            <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <div class="field password required">
                     <label for="pass" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
                     <div class="control">
