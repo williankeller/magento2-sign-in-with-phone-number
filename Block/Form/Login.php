@@ -58,7 +58,6 @@ class Login extends \Magento\Customer\Block\Form\Login
     }
 
     /**
-     * 
      * @return object
      */
     public function getMode()
