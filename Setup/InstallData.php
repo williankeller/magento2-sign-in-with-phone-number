@@ -44,7 +44,6 @@ class InstallData implements InstallDataInterface
         $setup->startSetup();
 
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
-
         $customerSetup->addAttribute(
             Customer::ENTITY,
             'phone_number', [
