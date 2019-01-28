@@ -92,15 +92,7 @@ class Signin implements SigninInterface
      */
     public function getByPhoneNumber(string $phone)
     {
-        // Add website filter if customer accounts are shared per website
-        $websiteIdFilter = false;
-        if ($this->helperData->getCustomerShareScope() == ConfigShare::SHARE_WEBSITE) {
-            $websiteIdFilter[] = $this->filterBuilder
-                ->setField('website_id')
-                ->setConditionType('eq')
-                ->setValue($this->storeManager->getStore()->getWebsiteId())
-                ->create();
-        }
+        $websiteIdFilter[] = $this->filterWebsiteShare();
 
         // Add customer attribute filter
         $customerFilter[] = $this->filterBuilder
@@ -111,16 +103,34 @@ class Signin implements SigninInterface
 
         // Build search criteria
         $searchCriteriaBuilder = $this->searchCriteriaBuilder->addFilters($customerFilter);
-        if ($websiteIdFilter) {
+        if (!empty($websiteIdFilter)) {
             $searchCriteriaBuilder->addFilters($websiteIdFilter);
         }
-
         $searchCriteria = $searchCriteriaBuilder->create();
 
-        // Retrieve the customer collection and return customer if there was exactly one customer found
+        // Retrieve customer collection.
         $collection = $this->customerRepository->getList($searchCriteria);
         if ($collection->getTotalCount() == 1) {
-            return $collection->getItems()[0];
+            // Return first occurence.
+            $accounts = $collection->getItems();
+            return reset($accounts);
+        }
+        return false;
+    }
+
+    /**
+     * Add website filter if customer accounts are shared per website.
+     *
+     * @return \Magento\Framework\Api\FilterBuilder|boolean
+     */
+    protected function filterWebsiteShare()
+    {
+        if ($this->helperData->getCustomerShareScope() == ConfigShare::SHARE_WEBSITE) {
+            return $this->filterBuilder
+                ->setField('website_id')
+                ->setConditionType('eq')
+                ->setValue($this->storeManager->getStore()->getWebsiteId())
+                ->create();
         }
         return false;
     }

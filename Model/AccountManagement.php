@@ -30,6 +30,7 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\EmailNotConfirmedException;
 use Magento\Framework\Exception\InvalidEmailOrPasswordException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\State\UserLockedException;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Math\Random;
 use Magento\Framework\Reflection\DataObjectProcessor;
@@ -241,7 +242,7 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     {
         if (!($this->authentication instanceof AuthenticationInterface)) {
             return \Magento\Framework\App\ObjectManager::getInstance()->get(
-                    \Magento\Customer\Model\AuthenticationInterface::class
+                \Magento\Customer\Model\AuthenticationInterface::class
             );
         } else {
             return $this->authentication;
@@ -257,11 +258,13 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     {
         $customerModel = $this->customerFactory->create()->updateData($customer);
         $this->eventManager->dispatch(
-            'customer_customer_authenticated', ['model' => $customerModel, 'password' => $password]
+            'customer_customer_authenticated',
+            ['model' => $customerModel, 'password' => $password]
         );
 
         $this->eventManager->dispatch(
-            'customer_data_object_login', ['customer' => $customer]
+            'customer_data_object_login',
+            ['customer' => $customer]
         );
         return $this;
     }

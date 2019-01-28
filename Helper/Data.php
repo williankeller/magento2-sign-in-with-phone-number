@@ -59,10 +59,10 @@ class Data extends AbstractHelper
      */
     public function getCustomerShareScope($scopeCode = null)
     {
-       return $this->scopeConfig->getValue(
+        return $this->scopeConfig->getValue(
             \Magento\Customer\Model\Config\Share::XML_PATH_CUSTOMER_ACCOUNT_SHARE,
             ScopeInterface::SCOPE_STORE,
             $scopeCode
-        ); 
+        );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A Magento 2 module named Magestat/SigninPhoneNumber
  * Copyright (C) 2019 Magestat
@@ -7,12 +8,13 @@
  *
  * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
- * 
- * // @codingStandardsIgnoreFile
- * 
+ *
  * @see \Magento\Customer\Block\Form\Login
  * @var \Magestat\SigninPhoneNumber\Block\Form\Login $block
+ * 
+ * @codingStandardsIgnoreFile
  */
+
 ?>
 <div class="block block-customer-login">
     <div class="block-title">
@@ -27,10 +29,10 @@
             <?= $block->getBlockHtml('formkey') ?>
             <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
                 <?php if ($block->isEnabled()): ?>
-                    <div class="field note"><?= $block->getMode()->getNote() ?></div>
+                    <div class="field note"><?= /* @escapeNotVerified */ $block->getMode()->getNote() ?></div>
                     <div class="field email required">
                         <label class="label" for="email">
-                            <span><?= $block->getMode()->getLabel() ?></span>
+                            <span><?= /* @escapeNotVerified */ $block->getMode()->getLabel() ?></span>
                         </label>
                         <div class="control">
                             <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> id="email" type="text" class="input-text" title="<?= $block->getMode()->getTitle() ?>" data-validate="{required:true}">
