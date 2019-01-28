@@ -244,9 +244,8 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
             return \Magento\Framework\App\ObjectManager::getInstance()->get(
                 \Magento\Customer\Model\AuthenticationInterface::class
             );
-        } else {
-            return $this->authentication;
         }
+        return $this->authentication;
     }
 
     /**

@@ -14,7 +14,6 @@
         "OSL-3.0"
     ],
     "version": "1.0.0",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Willian Keller",
@@ -26,7 +25,12 @@
         "issues": "https://github.com/magestat/magento2-sign-in-with-phone-number/issues/"
     },
     "require": {
-        "php": "~7.0.0|~7.1.0"
+        "php": "7.0.2|7.0.4|~7.0.6|~7.1.0"
+    },
+    "require-dev": {
+        "phpmd/phpmd": "@stable",
+        "phpspec/phpspec": "^2.5",
+        "squizlabs/php_codesniffer": "3.0.1"
     },
     "autoload": {
         "files": [
