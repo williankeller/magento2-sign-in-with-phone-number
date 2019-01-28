@@ -21,6 +21,11 @@ use Magento\Framework\Setup\ModuleContextInterface;
 class InstallData implements InstallDataInterface
 {
     /**
+     * @var string Customer Phone Number attribute.
+     */
+    const PHONE_NUMBER = 'phone_number';
+
+    /**
      * @var \Magento\Customer\Setup\CustomerSetupFactory
      */
     private $customerSetupFactory;

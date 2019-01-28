@@ -11,6 +11,9 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <!--<preference for="Magento\Customer\Api\AccountManagementInterface" type="Magestat\SigninPhoneNumber\Model\AccountManagement" />-->
+    <!-- API Preferences -->
+    <preference for="Magestat\SigninPhoneNumber\Api\SigninInterface" type="Magestat\SigninPhoneNumber\Model\handler\Signin"/>
+    <!-- Overrides -->
+    <preference for="Magento\Customer\Api\AccountManagementInterface" type="Magestat\SigninPhoneNumber\Model\AccountManagement" />
     <preference for="Magento\Customer\Block\Form\Login" type="Magestat\SigninPhoneNumber\Block\Form\Login"/>
 </config>

@@ -49,4 +49,20 @@ class Data extends AbstractHelper
             $scopeCode
         );
     }
+
+    /**
+     * Get if customer accounts are shared per website.
+     *
+     * @see \Magento\Customer\Model\Config\Share
+     * @param string|null $scopeCode
+     * @return string
+     */
+    public function getCustomerShareScope($scopeCode = null)
+    {
+       return $this->scopeConfig->getValue(
+            \Magento\Customer\Model\Config\Share::XML_PATH_CUSTOMER_ACCOUNT_SHARE,
+            ScopeInterface::SCOPE_STORE,
+            $scopeCode
+        ); 
+    }
 }

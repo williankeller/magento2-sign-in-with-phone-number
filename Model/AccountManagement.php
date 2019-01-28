@@ -38,8 +38,8 @@ use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\StringUtils as StringHelper;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface as PsrLogger;
+use Magestat\SigninPhoneNumber\Api\SigninInterface as HandlerSignin;
 use Magestat\SigninPhoneNumber\Model\Config\Source\SigninMode;
-use Magestat\SigninPhoneNumber\Model\Handler\Signin as HandlerSignin;
 
 /**
  * Class AccountManagement
@@ -65,7 +65,7 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     private $eventManager;
 
     /**
-     * @var \Magestat\SigninPhoneNumber\Model\Handler\Signin
+     * @var \Magestat\SigninPhoneNumber\Api\SigninInterface
      */
     protected $handlerSignin;
 
@@ -158,7 +158,7 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     public function authenticate($username, $password)
     {
         try {
-            $customer = $this->customerRepository->get($username);
+            $customer = $this->handleSignin($username);
         } catch (NoSuchEntityException $e) {
             throw new InvalidEmailOrPasswordException(__('Invalid login or password.'));
         }
@@ -182,19 +182,72 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     }
 
     /**
+     * Handle login mode.
+     *
+     * @param string $username Customer email or phone number
+     * @return object Customer entity object
+     */
+    private function handleSignin(string $username)
+    {
+        if (!$this->handlerSignin->isEnabled()) {
+            return $this->customerRepository->get($username);
+        }
+
+        switch ($this->handlerSignin->getSigninMode()) {
+            case SigninMode::TYPE_PHONE:
+                return $this->withPhoneNumber($username);
+            case SigninMode::TYPE_BOTH_OR:
+                return $this->withPhoneNumberOrEmail($username);
+            default:
+                return $this->customerRepository->get($username);
+        }
+    }
+
+    /**
+     * Action to login with Phone Number only.
+     *
+     * @param string $username Customer phone number.
+     * @return \Magento\Customer\Api\Data\CustomerInterface
+     * @throws NoSuchEntityException
+     */
+    private function withPhoneNumber(string $username)
+    {
+        $customer = $this->handlerSignin->getByPhoneNumber($username);
+        if (false == $customer) {
+            throw new NoSuchEntityException();
+        }
+        return $customer;
+    }
+
+    /**
+     * Action to login with Phone Number or Email.
+     *
+     * @param string $username Customer phone number or email.
+     * @return \Magento\Customer\Api\Data\CustomerInterface
+     */
+    private function withPhoneNumberOrEmail(string $username)
+    {
+        $customer = $this->handlerSignin->getByPhoneNumber($username);
+        if (false == $customer) {
+            return $this->customerRepository->get($username);
+        }
+        return $customer;
+    }
+
+    /**
      * {@inheritdoc}
      */
     private function getAuthentication()
     {
         if (!($this->authentication instanceof AuthenticationInterface)) {
             return \Magento\Framework\App\ObjectManager::getInstance()->get(
-                \Magento\Customer\Model\AuthenticationInterface::class
+                    \Magento\Customer\Model\AuthenticationInterface::class
             );
         } else {
             return $this->authentication;
         }
     }
-    
+
     /**
      * @param object $customer Customer object.
      * @param string $password Customer password.
@@ -204,13 +257,11 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     {
         $customerModel = $this->customerFactory->create()->updateData($customer);
         $this->eventManager->dispatch(
-            'customer_customer_authenticated',
-            ['model' => $customerModel, 'password' => $password]
+            'customer_customer_authenticated', ['model' => $customerModel, 'password' => $password]
         );
 
         $this->eventManager->dispatch(
-            'customer_data_object_login',
-            ['customer' => $customer]
+            'customer_data_object_login', ['customer' => $customer]
         );
         return $this;
     }
