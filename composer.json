@@ -16,13 +16,12 @@
     "version": "1.0.0",
     "authors": [
         {
-            "name": "Magestat",
-            "email": "contact@magestat.com",
-            "homepage": "http://www.magestat.com"
+            "name": "Willian Keller",
+            "email": "willianlkeller@outlook.com",
+            "homepage": "https://github.com/williankeller"
         }
     ],
     "support": {
-        "email": "willianlkeller@outlook.com",
         "issues": "https://github.com/magestat/magento2-sign-in-with-phone-number/issues/"
     },
     "require": {

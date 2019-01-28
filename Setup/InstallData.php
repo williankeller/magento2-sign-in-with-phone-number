@@ -18,6 +18,11 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 
+/**
+ * Install data
+ *
+ * @package \Magestat\SigninPhoneNumber\Setup
+ */
 class InstallData implements InstallDataInterface
 {
     /**
@@ -48,11 +53,11 @@ class InstallData implements InstallDataInterface
     ) {
         $setup->startSetup();
 
+        /** @var \Magento\Customer\Setup\CustomerSetupFactory $customerSetup **/
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
         $customerSetup->addAttribute(
             Customer::ENTITY,
-            'phone_number', [
-                'type' => 'static',
+            self::PHONE_NUMBER, [
                 'label' => 'Phone Number',
                 'input' => 'text',
                 'required' => false,
@@ -66,7 +71,7 @@ class InstallData implements InstallDataInterface
             ]
         );
         /** @var $attribute */
-        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'customer_number');
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', self::PHONE_NUMBER);
         $attribute->setData('used_in_forms', ['adminhtml_customer']);
         $attribute->save();
 

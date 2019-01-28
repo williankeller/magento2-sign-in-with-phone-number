@@ -12,6 +12,7 @@
 
 namespace Magestat\SigninPhoneNumber\Model\Handler;
 
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Store\Model\StoreManagerInterface;
@@ -24,6 +25,11 @@ use Magestat\SigninPhoneNumber\Helper\Data as HelperData;
  */
 class Signin implements SigninInterface
 {
+    /**
+     * @var \Magento\Customer\Api\CustomerRepositoryInterface
+     */
+    private $customerRepository;
+
     /**
      * @var \Magento\Framework\Api\SearchCriteriaBuilder
      */
@@ -45,16 +51,20 @@ class Signin implements SigninInterface
     private $helperData;
 
     /**
+     * @param CustomerRepositoryInterface $customerRepository
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param FilterBuilder $filterBuilder
      * @param StoreManagerInterface $storeManager
+     * @param HelperData $helperData
      */
     public function __construct(
+        CustomerRepositoryInterface $customerRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         FilterBuilder $filterBuilder,
         StoreManagerInterface $storeManager,
         HelperData $helperData
     ) {
+        $this->customerRepository = $customerRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->filterBuilder = $filterBuilder;
         $this->storeManager = $storeManager;
@@ -93,14 +103,14 @@ class Signin implements SigninInterface
         }
 
         // Add customer attribute filter
-        $customerNumberFilter[] = $this->filterBuilder
+        $customerFilter[] = $this->filterBuilder
             ->setField(\Magestat\SigninPhoneNumber\Setup\InstallData::PHONE_NUMBER)
             ->setConditionType('eq')
             ->setValue($phone)
             ->create();
 
         // Build search criteria
-        $searchCriteriaBuilder = $this->searchCriteriaBuilder->addFilters($customerNumberFilter);
+        $searchCriteriaBuilder = $this->searchCriteriaBuilder->addFilters($customerFilter);
         if ($websiteIdFilter) {
             $searchCriteriaBuilder->addFilters($websiteIdFilter);
         }

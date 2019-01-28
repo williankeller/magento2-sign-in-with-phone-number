@@ -39,5 +39,5 @@ interface SigninInterface
      * @param string $phone Customer phone number attribute.
      * @return boolean|object Customer object or false.
      */
-    public function getByPhoneNumber($phone);
+    public function getByPhoneNumber(string $phone);
 }
