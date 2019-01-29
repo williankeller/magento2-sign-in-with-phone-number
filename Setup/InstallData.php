@@ -74,7 +74,8 @@ class InstallData implements InstallDataInterface
         );
         /** @var $attribute */
         $attribute = $customerSetup->getEavConfig()->getAttribute(
-            Customer::ENTITY, self::PHONE_NUMBER
+            Customer::ENTITY,
+            self::PHONE_NUMBER
         );
         $usedInForms = [
             'adminhtml_customer',

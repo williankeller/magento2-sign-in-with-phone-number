@@ -14,6 +14,7 @@
  * 
  * @codingStandardsIgnoreFile
  */
+
 ?>
 <?= $block->getChildHtml('form_fields_before') ?>
 <?php /* Extensions placeholder */ ?>
@@ -141,12 +142,14 @@
                 <input type="email" name="email" autocomplete="email" id="email_address" value="<?= $block->escapeHtmlAttr($block->getFormData()->getEmail()) ?>" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
             </div>
         </div>
-        <div class="field required">
-            <label for="phone_number" class="label"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
-            <div class="control">
-                <input type="text" name="phone_number" id="phone_number" value="<?= $block->escapeHtmlAttr($block->getFormData()->getPhoneNumber()) ?>" title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>" class="input-text" data-validate="{required:true}">
+        <?php if ($block->isEnabled()): ?>
+            <div class="field required">
+                <label for="phone_number" class="label"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="phone_number" id="phone_number" value="<?= $block->escapeHtmlAttr($block->getFormData()->getPhoneNumber()) ?>" title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>" class="input-text" data-validate="{required:true}">
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
         <div class="field password required">
             <label for="password" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
             <div class="control">

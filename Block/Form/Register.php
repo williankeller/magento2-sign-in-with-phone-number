@@ -21,6 +21,7 @@ use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryFa
 use Magento\Framework\Module\Manager;
 use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Url;
+use Magestat\SigninPhoneNumber\Helper\Data as HelperData;
 
 /**
  * Customer register form block
@@ -31,6 +32,11 @@ use Magento\Customer\Model\Url;
  */
 class Register extends \Magento\Customer\Block\Form\Register
 {
+    /**
+     * @var \Magestat\SigninPhoneNumber\Helper\Data
+     */
+    protected $helperData;
+
     /**
      * Constructor
      *
@@ -44,7 +50,7 @@ class Register extends \Magento\Customer\Block\Form\Register
      * @param Session $customerSession
      * @param Url $customerUrl
      * @param array $data
-     * 
+     *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
@@ -57,6 +63,7 @@ class Register extends \Magento\Customer\Block\Form\Register
         Manager $moduleManager,
         Session $customerSession,
         Url $customerUrl,
+        HelperData $helperData,
         array $data = []
     ) {
         parent::__construct(
@@ -69,8 +76,16 @@ class Register extends \Magento\Customer\Block\Form\Register
             $moduleManager,
             $customerSession,
             $customerUrl,
-            $data            
+            $data
         );
-        $this->_isScopePrivate = false;
+        $this->helperData = $helperData;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->helperData->isActive();
     }
 }
