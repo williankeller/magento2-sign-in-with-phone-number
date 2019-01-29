@@ -12,6 +12,16 @@
 
 namespace Magestat\SigninPhoneNumber\Block\Form;
 
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Directory\Helper\Data;
+use Magento\Framework\Json\EncoderInterface;
+use Magento\Framework\App\Cache\Type\Config;
+use Magento\Directory\Model\ResourceModel\Region\CollectionFactory as RegionFactory;
+use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryFactory;
+use Magento\Framework\Module\Manager;
+use Magento\Customer\Model\Session;
+use Magento\Customer\Model\Url;
+
 /**
  * Customer register form block
  *
@@ -22,51 +32,33 @@ namespace Magestat\SigninPhoneNumber\Block\Form;
 class Register extends \Magento\Customer\Block\Form\Register
 {
     /**
-     * @var \Magento\Customer\Model\Session
-     */
-    protected $_customerSession;
-
-    /**
-     * @var \Magento\Framework\Module\Manager
-     */
-    protected $_moduleManager;
-
-    /**
-     * @var \Magento\Customer\Model\Url
-     */
-    protected $_customerUrl;
-
-    /**
      * Constructor
      *
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\Directory\Helper\Data $directoryHelper
-     * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
-     * @param \Magento\Framework\App\Cache\Type\Config $configCacheType
-     * @param \Magento\Directory\Model\ResourceModel\Region\CollectionFactory $regionCollectionFactory
-     * @param \Magento\Directory\Model\ResourceModel\Country\CollectionFactory $countryCollectionFactory
-     * @param \Magento\Framework\Module\Manager $moduleManager
-     * @param \Magento\Customer\Model\Session $customerSession
-     * @param \Magento\Customer\Model\Url $customerUrl
+     * @param Context $context
+     * @param Data $directoryHelper
+     * @param EncoderInterface $jsonEncoder
+     * @param Config $configCacheType
+     * @param RegionFactory $regionCollectionFactory
+     * @param CountryFactory $countryCollectionFactory
+     * @param Manager $moduleManager
+     * @param Session $customerSession
+     * @param Url $customerUrl
      * @param array $data
-     *
+     * 
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Directory\Helper\Data $directoryHelper,
-        \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\Framework\App\Cache\Type\Config $configCacheType,
-        \Magento\Directory\Model\ResourceModel\Region\CollectionFactory $regionCollectionFactory,
-        \Magento\Directory\Model\ResourceModel\Country\CollectionFactory $countryCollectionFactory,
-        \Magento\Framework\Module\Manager $moduleManager,
-        \Magento\Customer\Model\Session $customerSession,
-        \Magento\Customer\Model\Url $customerUrl,
+        Context $context,
+        Data $directoryHelper,
+        EncoderInterface $jsonEncoder,
+        Config $configCacheType,
+        RegionFactory $regionCollectionFactory,
+        CountryFactory $countryCollectionFactory,
+        Manager $moduleManager,
+        Session $customerSession,
+        Url $customerUrl,
         array $data = []
     ) {
-        $this->_customerUrl = $customerUrl;
-        $this->_moduleManager = $moduleManager;
-        $this->_customerSession = $customerSession;
         parent::__construct(
             $context,
             $directoryHelper,
@@ -74,7 +66,10 @@ class Register extends \Magento\Customer\Block\Form\Register
             $configCacheType,
             $regionCollectionFactory,
             $countryCollectionFactory,
-            $data
+            $moduleManager,
+            $customerSession,
+            $customerUrl,
+            $data            
         );
         $this->_isScopePrivate = false;
     }

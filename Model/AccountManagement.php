@@ -95,6 +95,8 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
      * @param ObjectFactory $objectFactory
      * @param ExtensibleDataObjectConverter $extensibleDataObjectConverter
      * @param HandlerSignin $handlerSignin
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         CustomerFactory $customerFactory,
