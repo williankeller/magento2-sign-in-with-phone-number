@@ -62,9 +62,10 @@ class InstallData implements InstallDataInterface
                 'label' => 'Phone Number',
                 'input' => 'text',
                 'required' => false,
-                'sort_order' => 200,
+                'sort_order' => 900,
                 'visible' => true,
                 'system' => false,
+                'unique' => true,
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => true,
                 'is_filterable_in_grid' => true,
@@ -72,8 +73,21 @@ class InstallData implements InstallDataInterface
             ]
         );
         /** @var $attribute */
-        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', self::PHONE_NUMBER);
-        $attribute->setData('used_in_forms', ['adminhtml_customer']);
+        $attribute = $customerSetup->getEavConfig()->getAttribute(
+            Customer::ENTITY, self::PHONE_NUMBER
+        );
+        $usedInForms = [
+            'adminhtml_customer',
+            'checkout_register',
+            'customer_account_create',
+            'customer_account_edit',
+            'adminhtml_checkout'
+        ];
+        $attribute->setData('used_in_forms', $usedInForms)
+            ->setData('is_used_for_customer_segment', true)
+            ->setData('is_system', 0)
+            ->setData('is_user_defined', 1);
+
         $attribute->save();
 
         $setup->endSetup();
