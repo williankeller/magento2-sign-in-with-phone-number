@@ -7,4 +7,5 @@ php:
 
 before_install:
   - composer config -g http-basic.repo.magento.com $MAGE_PUBLICKEY $MAGE_PRIVATEKEY
+  - composer install
   - vendor/bin/phpcs . --standard=MEQP2 --extensions=php,phtml
