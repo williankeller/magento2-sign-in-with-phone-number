@@ -2,8 +2,10 @@ Sign in With Phone Number for Magento 2
 =====================
 
 This extension allows customers to access your store using their phone number.
-Also is possible to login using both, your customer can choose which info they want to use.
-Is possible to login only with phone number or login with email or phone number at the same field.
+Also is possible to login using both, email or phone number at the same field.
+- Login with phone number or email.
+- Possibility to create account using phone number.
+- Change phone number under customer dashboard.
 
 [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number)
 

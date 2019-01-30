@@ -32,7 +32,7 @@ class Edit extends \Magento\Customer\Block\Form\Edit
     /**
      * @var \Magestat\SigninPhoneNumber\Helper\Data
      */
-    protected $helperData;
+    private $helperData;
 
     /**
      * @param Context $context

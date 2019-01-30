@@ -123,7 +123,7 @@ class Signin implements SigninInterface
      *
      * @return \Magento\Framework\Api\FilterBuilder|boolean
      */
-    protected function filterWebsiteShare()
+    private function filterWebsiteShare()
     {
         if ($this->helperData->getCustomerShareScope() == ConfigShare::SHARE_WEBSITE) {
             return $this->filterBuilder

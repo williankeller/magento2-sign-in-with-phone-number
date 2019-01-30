@@ -68,7 +68,7 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     /**
      * @var \Magestat\SigninPhoneNumber\Api\SigninInterface
      */
-    protected $handlerSignin;
+    private $handlerSignin;
 
     /**
      * @param CustomerFactory $customerFactory

@@ -35,7 +35,7 @@ class Register extends \Magento\Customer\Block\Form\Register
     /**
      * @var \Magestat\SigninPhoneNumber\Helper\Data
      */
-    protected $helperData;
+    private $helperData;
 
     /**
      * Constructor

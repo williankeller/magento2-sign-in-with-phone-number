@@ -7,13 +7,14 @@
         "phone number",
         "customer login",
         "login with phone",
-        "magento 2 login"
+        "magento 2 login",
+        "magentyo 2 extension"
     ],
     "type": "magento2-module",
     "license": [
         "OSL-3.0"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "authors": [
         {
             "name": "Willian Keller",

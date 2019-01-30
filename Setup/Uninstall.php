@@ -43,10 +43,12 @@ class Uninstall implements UninstallInterface
     /**
      * {@inheritdoc}
      */
+    // @codingStandardsIgnoreStart
     public function uninstall(
         SchemaSetupInterface $setup,
         ModuleContextInterface $context
     ) {
+        // codingStandardsIgnoreEnd
         $setup->startSetup();
 
         $eavSetup = $this->eavSetupFactory->create();

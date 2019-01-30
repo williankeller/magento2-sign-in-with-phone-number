@@ -47,10 +47,12 @@ class InstallData implements InstallDataInterface
     /**
      * {@inheritdoc}
      */
+    // @codingStandardsIgnoreStart
     public function install(
         ModuleDataSetupInterface $setup,
         ModuleContextInterface $context
     ) {
+        // codingStandardsIgnoreEnd
         $setup->startSetup();
 
         /** @var \Magento\Customer\Setup\CustomerSetupFactory $customerSetup **/

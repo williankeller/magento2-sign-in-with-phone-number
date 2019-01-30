@@ -29,7 +29,7 @@ class Login extends \Magento\Customer\Block\Form\Login
     /**
      * @var \Magestat\SigninPhoneNumber\Helper\Data
      */
-    protected $helperData;
+    private $helperData;
 
     /**
      * @param Context $context
