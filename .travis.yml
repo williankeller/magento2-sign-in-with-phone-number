@@ -1,0 +1,10 @@
+dist: trusty
+language: php
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+
+before_install:
+  - composer config -g http-basic.repo.magento.com $MAGE_PUBLICKEY $MAGE_PRIVATEKEY
+  - vendor/bin/phpcs . --standard=MEQP2 --extensions=php,phtml
