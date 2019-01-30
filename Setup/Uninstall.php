@@ -29,7 +29,7 @@ class Uninstall implements UninstallInterface
     /**
      * @var \Magento\Eav\Setup\EavSetupFactory
      */
-    protected $eavSetupFactory;
+    private $eavSetupFactory;
 
     /**
      * @param EavSetupFactory $eavSetupFactory
