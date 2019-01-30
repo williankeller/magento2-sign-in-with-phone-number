@@ -8,4 +8,4 @@ before_install:
   - composer config -g http-basic.repo.magento.com $MAGE_PUBLICKEY $MAGE_PRIVATEKEY
   - composer install
   - composer create-project --repository=https://repo.magento.com magento/marketplace-eqp magento-coding-standard
-  - magento-coding-standard/vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=MEQP2 --extensions=php,phtml
+  - magento-coding-standard/vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=MEQP2 --extensions=php,phtml $(pwd)
