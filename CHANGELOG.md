@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### [[1.1.1](https://github.com/magestat/magento2-sign-in-with-phone-number/releases/tag/1.1.1)] - 2019-02-06
+#### Added
+- Compatibility with PHP 7.2
+
+
 ### [[1.1.0](https://github.com/magestat/magento2-sign-in-with-phone-number/releases/tag/1.1.0)] - 2019-01-29
 #### Added
 - Possibility to create account with main Phone Number.
