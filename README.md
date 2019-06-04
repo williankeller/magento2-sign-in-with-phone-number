@@ -1,8 +1,8 @@
 # Sign in With Phone Number for Magento 2
 
-This extension allows customers to access your store using their phone number. Also is possible to login using both, email or phone number at the same field. Magento 2 - Mobile login extention for FREE.
-- Login with phone number or email.
-- Possibility to create account using phone number.
+This extension allows customers to access your store using their mobile phone number. Also it is possible to login using both (email or phone number) at the same field, this extension is capable to handle the field value and access the store with the provided data - Mobile login extention for Magento 2.
+- Login with mobile phone number or email.
+- Possibility to create account using mobile phone number.
 - Change phone number under customer dashboard.
 
 [![Build Status](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number) [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number)
