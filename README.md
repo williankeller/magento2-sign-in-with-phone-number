@@ -1,11 +1,11 @@
 # Sign in With Phone Number for Magento 2
 
-This extension allows customers to access your store using their phone number. Also is possible to login using both, email or phone number at the same field.
+This extension allows customers to access your store using their phone number. Also is possible to login using both, email or phone number at the same field. Magento 2 - Mobile login extention for FREE.
 - Login with phone number or email.
 - Possibility to create account using phone number.
 - Change phone number under customer dashboard.
 
-[![Build Status](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number) [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number) 
+[![Build Status](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number) [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number)
 
 ## 1. Installation
 
@@ -32,6 +32,8 @@ git clone git@github.com:magestat/magento2-sign-in-with-phone-number.git app/cod
 Run the following command in Magento 2 root folder:
 ```sh
 php bin/magento module:enable Magestat_SigninPhoneNumber --clear-static-content
+```
+```sh
 php bin/magento setup:upgrade
 ```
 
