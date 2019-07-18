@@ -7,9 +7,9 @@ This extension allows customers to access your store using their mobile phone nu
 
 [![Build Status](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number) [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number)
 
-## 1. Installation
+## Installation
 
-### Install via composer (recommend)
+### Install via composer (recommended)
 
 Run the following command in Magento 2 root folder:
 ```sh
@@ -27,11 +27,11 @@ Run the following command in Magento 2 root folder:
 git clone git@github.com:magestat/magento2-sign-in-with-phone-number.git app/code/Magestat/SigninPhoneNumber
 ```
 
-## 2. Activation
+## Activation
 
 Run the following command in Magento 2 root folder:
 ```sh
-php bin/magento module:enable Magestat_SigninPhoneNumber --clear-static-content
+php bin/magento module:enable Magestat_SigninPhoneNumber
 ```
 ```sh
 php bin/magento setup:upgrade
@@ -42,13 +42,13 @@ Clear the caches:
 php bin/magento cache:clean
 ```
 
-## 3. Configuration
+## Configuration
 
-1. Go to **Stores** > **Configuration** > **Magestat** > **Sign in With Phone Number**.
+1. Go to **STORES** > **Configuration** > **MAGESTAT** > **Sign in With Phone Number**.
 2. Select **Enabled** option to enable the module.
-3. Under *Settings* tab, change the **Sign in Mode** to fit to your login process.
+3. Under **Settings** tab, change the **Sign in Mode** to fit to your login process.
 
-## 4. Uninstall
+## Uninstall
 
 ```sh
 php bin/magento module:uninstall -r Magestat_SigninPhoneNumber
@@ -62,6 +62,7 @@ Want to contribute to this extension? The quickest way is to open a [pull reques
 ## Support
 
 If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magestat/magento2-sign-in-with-phone-number/issues).
-Need help setting up or want to customize this extension to meet your business needs? Please open an issue and if we like your idea we will add this feature for free or at a discounted rate.
+
+Need help setting up or want to customize this extension to meet your business needs? Please open an issue and if we like your idea we will add this feature for free.
 
 © Magestat.
