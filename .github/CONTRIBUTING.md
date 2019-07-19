@@ -1,4 +1,4 @@
-# Contributing to Sign in With Phone Number extention for Magento 2
+# Contributing to Sign in With Phone Number for Magento 2
 
 This contribution model has contributors maintaining their own fork of the **Sign in With Phone Number** repository.
 The forked repository is then used to submit a request to the base repository to “pull” a set of changes.
