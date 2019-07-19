@@ -43,30 +43,27 @@ use Magestat\SigninPhoneNumber\Api\SigninInterface as HandlerSignin;
 use Magestat\SigninPhoneNumber\Model\Config\Source\SigninMode;
 
 /**
- * Class AccountManagement
- *
- * @package \Magestat\SigninPhoneNumber\Model
  * @see \Magento\Customer\Model\AccountManagement
  */
 class AccountManagement extends \Magento\Customer\Model\AccountManagement
 {
     /**
-     * @var \Magento\Customer\Api\CustomerRepositoryInterface
+     * @var CustomerRepositoryInterface
      */
     private $customerRepository;
 
     /**
-     * @var \Magento\Customer\Model\CustomerFactory
+     * @var CustomerFactory
      */
     private $customerFactory;
 
     /**
-     * @var \Magento\Framework\Event\ManagerInterface
+     * @var ManagerInterface
      */
     private $eventManager;
 
     /**
-     * @var \Magestat\SigninPhoneNumber\Api\SigninInterface
+     * @var SigninInterface
      */
     private $handlerSignin;
 
@@ -156,7 +153,7 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function authenticate($username, $password)
     {
@@ -172,6 +169,7 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
         }
         try {
             $this->getAuthentication()->authenticate($customerId, $password);
+            // phpcs:disable Magento2.Exceptions.ThrowCatch
         } catch (InvalidEmailOrPasswordException $e) {
             throw new InvalidEmailOrPasswordException(__('Invalid login or password.'));
         }
@@ -188,7 +186,7 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
      * Handle login mode.
      *
      * @param string $username Customer email or phone number
-     * @return object Customer entity object
+     * @return \Magento\Customer\Api\Data\CustomerInterface
      */
     private function handleSignin(string $username)
     {
@@ -251,9 +249,9 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     }
 
     /**
-     * @param object $customer Customer object.
+     * @param \Magento\Customer\Api\Data\CustomerInterface $customer
      * @param string $password Customer password.
-     * @return object \Magestat\SigninPhoneNumber\Model\AccountManagement
+     * @return \Magestat\SigninPhoneNumber\Model\AccountManagement
      */
     private function dispatchEvents($customer, $password)
     {
