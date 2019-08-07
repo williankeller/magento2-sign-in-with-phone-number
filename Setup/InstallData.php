@@ -20,8 +20,6 @@ use Magento\Framework\Setup\ModuleContextInterface;
 
 /**
  * Install data
- *
- * @package \Magestat\SigninPhoneNumber\Setup
  */
 class InstallData implements InstallDataInterface
 {
@@ -31,7 +29,7 @@ class InstallData implements InstallDataInterface
     const PHONE_NUMBER = 'phone_number';
 
     /**
-     * @var \Magento\Customer\Setup\CustomerSetupFactory
+     * @var CustomerSetupFactory
      */
     private $customerSetupFactory;
 
@@ -61,7 +59,7 @@ class InstallData implements InstallDataInterface
             Customer::ENTITY,
             self::PHONE_NUMBER,
             [
-                'label' => 'Phone Number',
+                'label' => 'Sign In Phone Number',
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 900,
