@@ -5,7 +5,7 @@ This extension allows customers to access your store using their mobile phone nu
 - Possibility to create account using mobile phone number.
 - Change phone number under customer dashboard.
 
-[![Build Status](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number) [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number)
+[![Build Status](https://travis-ci.org/williankeller/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/williankeller/magento2-sign-in-with-phone-number) [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number)
 
 ## Installation
 
