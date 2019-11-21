@@ -27,7 +27,7 @@ composer install
 
 Run the following command in Magento 2 root folder:
 ```sh
-git clone git@github.com:magestat/magento2-sign-in-with-phone-number.git app/code/Magestat/SigninPhoneNumber
+git clone git@github.com:williankeller/magento2-sign-in-with-phone-number.git app/code/Magestat/SigninPhoneNumber
 ```
 
 ## Activation
@@ -64,8 +64,6 @@ Want to contribute to this extension? The quickest way is to open a [pull reques
 
 ## Support
 
-If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magestat/magento2-sign-in-with-phone-number/issues).
+If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/williankeller/magento2-sign-in-with-phone-number/issues).
 
-Need help setting up or want to customize this extension to meet your business needs? Please open an issue and if we like your idea we will add this feature for free.
-
-© Magestat.
+Need help setting up or want to customize this extension to meet your business needs? Please open an issue and I'll add this feature if it's a good one.
