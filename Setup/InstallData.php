@@ -1,15 +1,5 @@
 <?php
 
-/**
- * A Magento 2 module named Magestat/SigninPhoneNumber
- * Copyright (C) 2019 Magestat
- *
- * This file included in Magestat/SigninWithPhoneNumber is licensed under OSL 3.0
- *
- * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * Please see LICENSE.txt for the full text of the OSL 3.0 license
- */
-
 namespace Magestat\SigninPhoneNumber\Setup;
 
 use Magento\Customer\Model\Customer;
@@ -20,6 +10,7 @@ use Magento\Framework\Setup\ModuleContextInterface;
 
 /**
  * Install data
+ * Create "phone_number" attribute
  */
 class InstallData implements InstallDataInterface
 {
@@ -53,7 +44,7 @@ class InstallData implements InstallDataInterface
         // codingStandardsIgnoreEnd
         $setup->startSetup();
 
-        /** @var \Magento\Customer\Setup\CustomerSetupFactory $customerSetup **/
+        /** @var CustomerSetupFactory $customerSetup **/
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
         $customerSetup->addAttribute(
             Customer::ENTITY,

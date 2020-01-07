@@ -1,15 +1,5 @@
 <?php
 
-/**
- * A Magento 2 module named Magestat/SigninPhoneNumber
- * Copyright (C) 2019 Magestat
- *
- * This file included in Magestat/SigninWithPhoneNumber is licensed under OSL 3.0
- *
- * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * Please see LICENSE.txt for the full text of the OSL 3.0 license
- */
-
 namespace Magestat\SigninPhoneNumber\Model;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
@@ -38,11 +28,13 @@ use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\StringUtils as StringHelper;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 use Psr\Log\LoggerInterface as PsrLogger;
 use Magestat\SigninPhoneNumber\Api\SigninInterface as HandlerSignin;
 use Magestat\SigninPhoneNumber\Model\Config\Source\SigninMode;
 
 /**
+ * Override Magento's default AccountManagement class.
  * @see \Magento\Customer\Model\AccountManagement
  */
 class AccountManagement extends \Magento\Customer\Model\AccountManagement
@@ -207,8 +199,8 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     /**
      * Action to login with Phone Number only.
      *
-     * @param string $username Customer phone number.
-     * @return \Magento\Customer\Api\Data\CustomerInterface
+     * @param string $username
+     * @return CustomerInterface
      * @throws NoSuchEntityException
      */
     private function withPhoneNumber(string $username)
@@ -223,8 +215,8 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     /**
      * Action to login with Phone Number or Email.
      *
-     * @param string $username Customer phone number or email.
-     * @return \Magento\Customer\Api\Data\CustomerInterface
+     * @param string $username
+     * @return CustomerInterface
      */
     private function withPhoneNumberOrEmail(string $username)
     {
@@ -249,9 +241,9 @@ class AccountManagement extends \Magento\Customer\Model\AccountManagement
     }
 
     /**
-     * @param \Magento\Customer\Api\Data\CustomerInterface $customer
+     * @param CustomerInterface $customer
      * @param string $password Customer password.
-     * @return \Magestat\SigninPhoneNumber\Model\AccountManagement
+     * @return AccountManagement
      */
     private function dispatchEvents($customer, $password)
     {

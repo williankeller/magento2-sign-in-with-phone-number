@@ -1,15 +1,5 @@
 <?php
 
-/**
- * A Magento 2 module named Magestat/SigninPhoneNumber
- * Copyright (C) 2019 Magestat
- *
- * This file included in Magestat/SigninWithPhoneNumber is licensed under OSL 3.0
- *
- * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * Please see LICENSE.txt for the full text of the OSL 3.0 license
- */
-
 namespace Magestat\SigninPhoneNumber\Model\Handler;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -21,32 +11,33 @@ use Magestat\SigninPhoneNumber\Api\SigninInterface;
 use Magestat\SigninPhoneNumber\Helper\Data as HelperData;
 
 /**
- * @package \Magestat\SigninPhoneNumber\Model\Handler
+ * Class Signin
+ * Handle login using the phone number instead of the email as default.
  */
 class Signin implements SigninInterface
 {
     /**
-     * @var \Magento\Customer\Api\CustomerRepositoryInterface
+     * @var CustomerRepositoryInterface
      */
     private $customerRepository;
 
     /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
+     * @var SearchCriteriaBuilder
      */
     private $searchCriteriaBuilder;
 
     /**
-     * @var \Magento\Framework\Api\FilterBuilder
+     * @var FilterBuilder
      */
     private $filterBuilder;
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     private $storeManager;
 
     /**
-     * @var \Magestat\SigninPhoneNumber\Helper\Data
+     * @var Data
      */
     private $helperData;
 
@@ -111,7 +102,7 @@ class Signin implements SigninInterface
         // Retrieve customer collection.
         $collection = $this->customerRepository->getList($searchCriteria);
         if ($collection->getTotalCount() == 1) {
-            // Return first occurence.
+            // Return first occurrence.
             $accounts = $collection->getItems();
             return reset($accounts);
         }
@@ -121,7 +112,7 @@ class Signin implements SigninInterface
     /**
      * Add website filter if customer accounts are shared per website.
      *
-     * @return \Magento\Framework\Api\FilterBuilder|boolean
+     * @return FilterBuilder|boolean
      */
     private function filterWebsiteShare()
     {
