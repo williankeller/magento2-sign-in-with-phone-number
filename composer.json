@@ -1,6 +1,6 @@
 {
     "name": "magestat/module-sign-in-with-phone-number",
-    "description": "This extension allows customers to access your store using their phone number.",
+    "description": "This extension allow your customers to login to your Magento store using their phone number.",
     "keywords": [
         "magento 2",
         "phone",
