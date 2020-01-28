@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### [1.2.0](https://github.com/magestat/magento2-sign-in-with-phone-number/releases/tag/1.2.0) - 01/28/2020
+#### Added
+- Telephone number to be unique
+
 ### [1.1.3](https://github.com/magestat/magento2-sign-in-with-phone-number/releases/tag/1.1.3) - 01/07/2020
 #### Improved
 - Change PHP docs
