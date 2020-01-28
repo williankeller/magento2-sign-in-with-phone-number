@@ -76,7 +76,9 @@ class ValidateUniquePhonenumber
         }
 
         if ($collection->getSize() > 0) {
-            throw new LocalizedException(__('A customer with the same phone number already exists in an associated website.'));
+            throw new LocalizedException(
+                __('A customer with the same phone number already exists in an associated website.')
+            );
         }
     }
 }
