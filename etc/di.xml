@@ -16,4 +16,8 @@
     <!-- Overrides -->
     <preference for="Magento\Customer\Api\AccountManagementInterface" type="Magestat\SigninPhoneNumber\Model\AccountManagement" />
     <preference for="Magento\Customer\Block\Form\Login" type="Magestat\SigninPhoneNumber\Block\Form\Login"/>
+
+    <type name="Magento\Customer\Model\ResourceModel\Customer">
+        <plugin name="magestat_validate_unique_phonenumber" type="Magestat\SigninPhoneNumber\Plugin\Model\ResourceModel\Customer\ValidateUniquePhonenumber" sortOrder="10" disabled="false"  />
+    </type>
 </config>
