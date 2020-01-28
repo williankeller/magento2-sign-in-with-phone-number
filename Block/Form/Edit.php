@@ -79,8 +79,8 @@ class Edit extends \Magento\Customer\Block\Form\Edit
      */
     public function getPhoneNumber()
     {
-        return (string) $this->getCustomer()
-            ->getCustomAttribute(InstallData::PHONE_NUMBER)
-            ->getValue();
+        $phoneAttribute = $this->getCustomer()
+            ->getCustomAttribute(InstallData::PHONE_NUMBER);
+        return $phoneAttribute ? (string) $phoneAttribute->getValue() : '';
     }
 }
