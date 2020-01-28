@@ -6,7 +6,7 @@ This extension allow your customers to login to your Magento store using their p
 - Change phone number under customer dashboard.
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/045049ad5e1e4750ac9a7e2544df46fd)](https://www.codacy.com/manual/magestat/magento2-sign-in-with-phone-number)
-[![Build Status](https://travis-ci.org/williankeller/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number) 
+[![Build Status](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number.svg?branch=develop)](https://travis-ci.org/magestat/magento2-sign-in-with-phone-number) 
 [![Packagist](https://img.shields.io/packagist/v/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number) 
 [![Downloads](https://img.shields.io/packagist/dt/magestat/module-sign-in-with-phone-number.svg)](https://packagist.org/packages/magestat/module-sign-in-with-phone-number)
 
