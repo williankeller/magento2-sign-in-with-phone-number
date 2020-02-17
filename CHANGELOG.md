@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### [1.2.1](https://github.com/magestat/magento2-sign-in-with-phone-number/releases/tag/1.2.1) - 02/17/2020
+#### Added
+- ACL for this module
+
 ### [1.2.0](https://github.com/magestat/magento2-sign-in-with-phone-number/releases/tag/1.2.0) - 01/28/2020
 #### Added
 - Telephone number to be unique
